@@ -12,6 +12,8 @@ struct ContentView: View {
     @State var show = false
     @State var viewState = CGSize.zero
     @State var showCard = false
+    @State var showFull = false
+    @State var bottomState = CGSize.zero
     
     var body: some View {
         ZStack {
@@ -75,6 +77,7 @@ struct ContentView: View {
                 .gesture(
                     DragGesture()
                         .onChanged { value in
+                            self.showCard = false
                             self.viewState = value.translation
                             self.show = true
                         }
@@ -84,10 +87,36 @@ struct ContentView: View {
                         }
                 )
             
+            //Text("\(bottomState.height)").offset(y: -300)
+            
             CardBottomView()
+                .offset(x: 0, y: bottomState.height)
                 .offset(y: showCard ? 360 : 1000)
                 .blur(radius: show ? 20 : 0)
                 .animation(.timingCurve(0.2, 0.6, 0.2, 1, duration: 0.8))
+                .gesture(
+                    DragGesture()
+                        .onChanged { value in
+                            var vh = value.translation.height
+                            if self.showFull {
+                                vh += -300
+                            }
+                            if vh < -320 {
+                                vh = -320
+                            }
+                            self.bottomState.height = vh
+                            
+                        }
+                        .onEnded { value in
+                            if (self.bottomState.height < -100 && !self.showFull) || (self.showFull && self.bottomState.height < -250) {
+                                self.showFull = true
+                                self.bottomState.height = -300
+                            } else {
+                                self.showFull = false
+                                self.bottomState = .zero
+                            }
+                        }
+                )
         }
         
             
