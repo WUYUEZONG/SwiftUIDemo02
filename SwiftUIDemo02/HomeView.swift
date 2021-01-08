@@ -9,6 +9,8 @@ import SwiftUI
 
 struct HomeView: View {
     @Binding var showProfile: Bool
+    @State var showUpdate = false
+    
     var body: some View {
         VStack {
             HStack {
@@ -16,6 +18,20 @@ struct HomeView: View {
                     .font(.system(size: 28, weight: .bold))
                 Spacer()
                 AvatarView(showProfile: $showProfile)
+                
+                Button(action: { self.showUpdate.toggle() }, label: {
+                    Image(systemName: "bell")
+                        .renderingMode(.original)
+                        .font(.system(size: 16, weight: .medium))
+                        .frame(width: 36, height: 36)
+                        .background(Color.white)
+                        .clipShape(Circle())
+                        .shadow(color: Color.black.opacity(0.1), radius: 1, x: 0.0, y: 1)
+                        .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0.0, y: 10)
+                })
+                .sheet(isPresented: $showUpdate, content: {
+                    ContentView()
+                })
             }
             .padding(.horizontal)
             .padding(.leading, 14)
@@ -23,8 +39,14 @@ struct HomeView: View {
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 30) {
-                    ForEach(0 ..< 3) { item in
-                        SectionView()
+                    ForEach(sectionData) { item in
+                        GeometryReader { geometry in
+                            SectionView(section: item)
+                                .rotation3DEffect(
+                                    .degrees(Double(geometry.frame(in: CoordinateSpace.global).minX) / -20),
+                                    axis: (x: 10, y: 10.0, z: 0.0))
+                        }
+                        .frame(width: cardWidth, height: cardWidth)
                     }
                 }
                 .padding(30)
@@ -43,33 +65,71 @@ struct HomeView_Previews: PreviewProvider {
 }
 
 struct SectionView: View {
+    
+    var section: Section
+    
     var body: some View {
         VStack {
             HStack(alignment: .top) {
-                Text("Prototype designs in SwiftUI")
+                Text(section.title)
                     .font(.system(size: 24, weight: .bold))
                     .frame(width: 160, alignment: .leading)
                     .foregroundColor(Color.white)
                 Spacer()
-                Image("Logo")
+                Image(section.logo)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 40, height: 40)
             }
-            Text("18 Sections".uppercased())
+            Text(section.text.uppercased())
                 .frame(maxWidth: .infinity, alignment: .leading)
-            Image("Illustration1")
+            section.image
                 .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(width: 210)
+                .aspectRatio(contentMode: .fit)
+                .frame(maxWidth: .infinity)
+                .padding(.horizontal, 20)
+
         }
-        .frame(width: cardWidth, height: cardWidth)
         .padding(.horizontal, 20)
         .padding(.top, 20)
-        .background(Color("background3"))
+        .frame(width: cardWidth, height: cardWidth)
+        .background(section.color)
         .cornerRadius(30)
-        .shadow(color: Color("background3").opacity(0.3), radius: 20, x: 0, y: 20)
+        .shadow(color: section.color.opacity(0.3), radius: 20, x: 0, y: 20)
     }
 }
 
-let cardWidth = screen.width - 60 - 80
+let cardWidth: CGFloat = screen.width - 60 - 40
+
+struct Section: Identifiable {
+    var id = UUID()
+    var title: String
+    var text: String
+    var logo: String
+    var color: Color
+    var image: Image
+}
+
+let sectionData = [
+    Section(
+        title: "Prototype designs in SwiftUI",
+        text: "18 Sections",
+        logo: "Logo",
+        color: Color(#colorLiteral(red: 0.3647058904, green: 0.06666667014, blue: 0.9686274529, alpha: 1)),
+        image: Image(uiImage: #imageLiteral(resourceName: "Illustration1"))
+    ),
+    Section(
+        title: "Prototype designs in SwiftUI",
+        text: "18 Sections",
+        logo: "Logo",
+        color: Color(#colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)),
+        image: Image(uiImage: #imageLiteral(resourceName: "Illustration4"))
+    ),
+    Section(
+        title: "Prototype designs in SwiftUI",
+        text: "18 Sections",
+        logo: "Logo",
+        color: Color(#colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)),
+        image: Image(uiImage: #imageLiteral(resourceName: "Illustration3"))
+    )
+]

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F00FA5225A84F120093C595 /* UpdatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F00FA5125A84F120093C595 /* UpdatesView.swift */; };
 		1F19E03625A6F35F001AF605 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F19E03525A6F35F001AF605 /* MenuView.swift */; };
 		1F19E03925A70016001AF605 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F19E03825A70016001AF605 /* Home.swift */; };
 		1F19E03C25A70C44001AF605 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F19E03B25A70C44001AF605 /* HomeView.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F00FA5125A84F120093C595 /* UpdatesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatesView.swift; sourceTree = "<group>"; };
 		1F19E03525A6F35F001AF605 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		1F19E03825A70016001AF605 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		1F19E03B25A70C44001AF605 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				1F19E03525A6F35F001AF605 /* MenuView.swift */,
 				1F19E03825A70016001AF605 /* Home.swift */,
 				1F19E03B25A70C44001AF605 /* HomeView.swift */,
+				1F00FA5125A84F120093C595 /* UpdatesView.swift */,
 				1F5259FE25A5848F00C271EB /* Assets.xcassets */,
 				1F525A0325A5848F00C271EB /* Info.plist */,
 				1F525A0025A5848F00C271EB /* Preview Content */,
@@ -150,6 +153,7 @@
 				1F5259FD25A5848B00C271EB /* ContentView.swift in Sources */,
 				1F19E03625A6F35F001AF605 /* MenuView.swift in Sources */,
 				1F19E03925A70016001AF605 /* Home.swift in Sources */,
+				1F00FA5225A84F120093C595 /* UpdatesView.swift in Sources */,
 				1F19E03C25A70C44001AF605 /* HomeView.swift in Sources */,
 				1F5259FB25A5848B00C271EB /* SwiftUIDemo02App.swift in Sources */,
 			);
