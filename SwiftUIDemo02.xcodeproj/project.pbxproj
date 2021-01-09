@@ -15,6 +15,7 @@
 		1F5259FD25A5848B00C271EB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5259FC25A5848B00C271EB /* ContentView.swift */; };
 		1F5259FF25A5848F00C271EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F5259FE25A5848F00C271EB /* Assets.xcassets */; };
 		1F525A0225A5848F00C271EB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F525A0125A5848F00C271EB /* Preview Assets.xcassets */; };
+		1FB0C89525A97A7B0007C153 /* UpdateDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB0C89425A97A7B0007C153 /* UpdateDetail.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		1F5259FE25A5848F00C271EB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1F525A0125A5848F00C271EB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1F525A0325A5848F00C271EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1FB0C89425A97A7B0007C153 /* UpdateDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateDetail.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				1F19E03825A70016001AF605 /* Home.swift */,
 				1F19E03B25A70C44001AF605 /* HomeView.swift */,
 				1F00FA5125A84F120093C595 /* UpdatesView.swift */,
+				1FB0C89425A97A7B0007C153 /* UpdateDetail.swift */,
 				1F5259FE25A5848F00C271EB /* Assets.xcassets */,
 				1F525A0325A5848F00C271EB /* Info.plist */,
 				1F525A0025A5848F00C271EB /* Preview Content */,
@@ -150,6 +153,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FB0C89525A97A7B0007C153 /* UpdateDetail.swift in Sources */,
 				1F5259FD25A5848B00C271EB /* ContentView.swift in Sources */,
 				1F19E03625A6F35F001AF605 /* MenuView.swift in Sources */,
 				1F19E03925A70016001AF605 /* Home.swift in Sources */,

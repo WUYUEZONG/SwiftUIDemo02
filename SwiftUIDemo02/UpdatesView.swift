@@ -12,11 +12,17 @@ struct UpdatesView: View {
         NavigationView {
             List(updateData) { item in
                 NavigationLink(
-                    destination: Text("Destination"),
+                    destination: UpdateDetail(update: item),
                     label: {
-                        HStack {
+                        HStack(spacing: 20.0) {
                             
-                            Image(item.image)
+                            item.image
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .padding(12)
+                                .frame(width: 90, height: 90)
+                                .background(Color.black)
+                                .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
                             
                             VStack(alignment: .leading, spacing: 8.0) {
                                 Text(item.title)
@@ -30,7 +36,9 @@ struct UpdatesView: View {
                                     
                             }
                         }
-                })
+                        
+                    })
+                    .padding(.vertical, 8.0)
             }
             .navigationBarTitle("Update")
         }
@@ -42,26 +50,22 @@ struct UpdatesView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             UpdatesView()
-            UpdatesView()
-                .previewDevice("iPhone 8")
-            UpdatesView()
-                .preferredColorScheme(.dark)
         }
     }
 }
 
 struct Update: Identifiable {
     var id = UUID()
-    var image: String
+    var image: Image
     var title: String
     var text: String
     var date: String
 }
 
 let updateData = [
-    Update(image: "logo", title: "Swift UI", text: "describe describe describe describe describedescribe describedescribe describe describe describe describe describedescribe describedescribe", date: "Jan 1"),
-    Update(image: "logo", title: "Swift UI", text: "describe describe describe describe describe describe describe describe describe describe", date: "Jan 1"),
-    Update(image: "logo", title: "Swift UI", text: "describe describe describe describe describe", date: "Jan 1"),
-    Update(image: "logo", title: "Swift UI", text: "describe describe describe describe describe", date: "Jan 1"),
-    Update(image: "logo", title: "Swift UI", text: "describe describe describe describe describe describe describe describe describe describe", date: "Jan 1")
+    Update(image: Image(uiImage: #imageLiteral(resourceName: "Illustration3")), title: "Swift UI", text: "describe describe describe describe describedescribe describedescribe describe describe describe describe describedescribe describedescribe", date: "Jan 1"),
+    Update(image: Image(uiImage: #imageLiteral(resourceName: "Illustration2")), title: "Swift UI", text: "describe describe describe describe describe describe describe describe describe describe", date: "Jan 1"),
+    Update(image: Image(uiImage: #imageLiteral(resourceName: "Illustration3")), title: "Swift UI", text: "describe describe describe describe describe", date: "Jan 1"),
+    Update(image: Image(uiImage: #imageLiteral(resourceName: "Illustration4")), title: "Swift UI", text: "describe describe describe describe describe", date: "Jan 1"),
+    Update(image: Image(uiImage: #imageLiteral(resourceName: "Illustration3")), title: "Swift UI", text: "describe describe describe describe describe describe describe describe describe describe", date: "Jan 1")
 ]
