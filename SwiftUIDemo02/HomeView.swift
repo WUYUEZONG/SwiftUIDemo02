@@ -13,9 +13,9 @@ struct HomeView: View {
     
     var body: some View {
         VStack {
-            HStack {
+            HStack(spacing: 10.0) {
                 Text("Watching")
-                    .font(.system(size: 28, weight: .bold))
+                    .modifier(CustomFontModifier())
                 Spacer()
                 AvatarView(showProfile: $showProfile)
                 
@@ -38,6 +38,41 @@ struct HomeView: View {
             .padding(.top, 30)
             
             ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 20.0) {
+                    HStack {
+                        RingView(width: 44, height: 44, show: .constant(true))
+                        VStack(alignment: .leading, spacing: 4.0) {
+                            Text("6 minutes left")
+                                .font(.headline)
+                            Text("12 sections to do today")
+                                .font(.subheadline)
+                        }
+                    }
+                    .padding(10)
+                    .background(Color.white)
+                    .cornerRadius(20)
+                    .modifier(ShadowModifier())
+                    
+                    RingView(width: 44, height: 44, show: .constant(true))
+                        .padding(10)
+                        .background(Color.white)
+                        .cornerRadius(20)
+                        .shadow(color: Color.black.opacity(0.1), radius: 20, x: 0, y: 10)
+                        .shadow(color: Color.black.opacity(0.1), radius: 1, x: 0, y: 1)
+                    
+                    RingView(width: 44, height: 44, show: .constant(true))
+                        .padding(10)
+                        .background(Color.white)
+                        .cornerRadius(20)
+                        .shadow(color: Color.black.opacity(0.1), radius: 20, x: 0, y: 10)
+                        .shadow(color: Color.black.opacity(0.1), radius: 1, x: 0, y: 1)
+                }
+                .padding(.leading, 30)
+                .padding(.vertical, 30)
+                .offset(y: -10)
+            }
+            
+            ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 30) {
                     ForEach(sectionData) { item in
                         GeometryReader { geometry in
@@ -52,6 +87,7 @@ struct HomeView: View {
                 .padding(30)
                 .padding(.bottom, 30)
             }
+            .offset(y: -40)
             
             Spacer()
         }

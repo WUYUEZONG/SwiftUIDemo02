@@ -89,7 +89,7 @@ struct ContentView: View {
             
             //Text("\(bottomState.height)").offset(y: -300)
             
-            CardBottomView()
+            CardBottomView(show: $showCard)
                 .offset(x: 0, y: bottomState.height)
                 .offset(y: showCard ? 360 : 1000)
                 .blur(radius: show ? 20 : 0)
@@ -182,6 +182,9 @@ struct TitleView: View {
 }
 
 struct CardBottomView: View {
+    
+    @Binding var show: Bool
+    
     var body: some View {
         VStack(spacing: 20.0) {
             Rectangle()
@@ -194,10 +197,24 @@ struct CardBottomView: View {
                 .multilineTextAlignment(.center)
                 .lineLimit(10)
                 .lineSpacing(4)
-            Circle()
-                .stroke(style: StrokeStyle(lineWidth: 4, lineCap: .round, lineJoin: .round))
-                .frame(width: 80, height: 80)
+            
                 
+            HStack(spacing: 20.0) {
+                RingView(width: 88, height: 88, percent: 78, show: $show)
+                    .animation(Animation.easeInOut.delay(0.8))
+                VStack(alignment: .leading, spacing: 8.0) {
+                    Text("SwiftUI").fontWeight(.bold)
+                    Text("12 This certificate is proof that Meng To")
+                        .font(.footnote)
+                        .foregroundColor(.gray)
+                        .lineSpacing(4)
+                }
+                .padding(20)
+                .background(Color.white)
+                .cornerRadius(20)
+                .shadow(color: Color.black.opacity(0.2), radius: 20, x: 0, y: 10)
+                
+            }
             
             Spacer()
         }
