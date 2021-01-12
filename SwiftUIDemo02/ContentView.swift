@@ -177,7 +177,7 @@ struct TitleView: View {
             Image("Illustration5")
             Spacer()
         }
-        .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)
+        .padding(.all)
     }
 }
 
@@ -194,6 +194,11 @@ struct CardBottomView: View {
                 .multilineTextAlignment(.center)
                 .lineLimit(10)
                 .lineSpacing(4)
+            Circle()
+                .stroke(style: StrokeStyle(lineWidth: 4, lineCap: .round, lineJoin: .round))
+                .frame(width: 80, height: 80)
+                
+            
             Spacer()
         }
         .padding(.all)
