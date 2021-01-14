@@ -16,7 +16,6 @@ struct RingView: View {
     var percent: CGFloat = 88
     @Binding var show: Bool
     
-    
     var body: some View {
         
         let multiplier = width / 44
@@ -52,6 +51,6 @@ struct RingView: View {
 
 struct RingView_Previews: PreviewProvider {
     static var previews: some View {
-        RingView(show: .constant(false))
+        RingView(show: .constant(true))
     }
 }

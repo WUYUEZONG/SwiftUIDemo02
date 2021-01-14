@@ -201,7 +201,7 @@ struct CardBottomView: View {
                 
             HStack(spacing: 20.0) {
                 RingView(width: 88, height: 88, percent: 78, show: $show)
-                    .animation(Animation.easeInOut.delay(0.8))
+                    //.animation(Animation.easeInOut.delay(0.3))
                 VStack(alignment: .leading, spacing: 8.0) {
                     Text("SwiftUI").fontWeight(.bold)
                     Text("12 This certificate is proof that Meng To")
